@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+    span {
+      padding: 2px;
+      border: 1px solid grey;
+       /*background-color: blue; */
+    }
+
+
+    </style>
+</head>
+<body>
+
+  
+  <my-box text="hello">Hello</my-box>
+  <my-box text="how are you?">How Are you </my-box>
+  <my-box text="goodbye">Goodby! </my-box>
+  <span>Free San</span>
+  <script>
+    /* make a template in order to provide more flexibilityand control over what we want to do */
+    const template = document.createElement('custom-box-template');
+    template.innerHTML = '<span id="main"><slot /></span>';
+
+   /* Step 1: create new HTML elements (mybox) from DOM*/
+    class MyBox extends HTMLElement {
+      constructor() {
+        super();
+
+        // const text = this.getAttribute('text')
+        /* Step 3: make this HTML element has its own shadow mode*/
+        this.attachShadow({mode: "open"})
+         /*step 4 create a span  */
+        const innerHTML = document.createElement('span');
+
+
+
+        
+        // innerHTML.innerText = text;
+
+        this.shadowRoot.innerHTML = '<span id="main">' + this.getAttribute('text') + "!" + '</span>';
+        this.shadowRoot.getElementById("main").style.color = "red";
+        this.shadowRoot.getElementById("main").style.fontSize = "8";
+
+         /*copy from the template */
+        this.shadowRoot.appendChild(template.cloneNode(true));
+      }
+      /*Step 6  the print function */
+      consoleClick() {
+        console.log("hello, from the console")
+      }
+
+      /* step 5 call bacl function to print things when click on the span*/
+      connectedCallback() {
+
+        // this.shadowRoot.getElementById("main").innerHTML += '!';
+        this.shadowRoot.getElementById("main").addEventListener('click', this.consoleClick)
+
+      }
+
+
+    }
+   /* Step 2: define and register a new custom element*/
+    window.customElements.define("my-box", MyBox)
+
+    </script>
+</body>
+</html>
