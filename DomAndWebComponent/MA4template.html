@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniAssignment 4</title>
+</head>
+
+<body>
+<!-- TODO 1: Fill in body content -->
+   <!-- hint: customized HTML tag -->
+
+ <!--   make template -->
+    <template id="word-temp">
+        <style>
+            p {
+              /*TODO 2 : Any Style you want*/
+            }
+        </style>
+        <!-- TODO 3: bold text -->
+        <!-- hint: think about which HTML tag can bold text --> 
+    </template>
+
+    <script>
+      // -----------------Task1------------------------
+      // create new HTML elements (wordShuffer) from DOM
+        class WordShuffler extends HTMLElement {
+            constructor() {
+                super();
+                //TODO 4: create list of colors
+
+                // TODO 5: generate random color
+               // hint : use Math.floor(Math.random() * X)
+                // TODO 6: open shadow mode
+  
+                //TODO 7: select template 
+                // hint : use .querySelector()
+              
+                //TODO 8: create template by createElement
+                // hint use  .createElement()
+
+                // TODO 9: modify style text content
+               // hint: think about use random color from todo 5
+
+                // TODO 10: append to shadow root 
+               
+                //TODO 11: add content to element
+                // hint: get the word text then use.querySelector('p').innerText
+            }
+          // -------------------------Task2---------------------
+          //TODO 12 function to random shuffle in a word
+            shuffle() {
+             // hint: google random shuffle characters from a String in Javascript, you will find many ways.
+            }
+           // TODO 13 add click event 
+            connectedCallback() {
+                // hint using querySelector and .addeventListenner
+            }
+
+        }
+        // TODO 14: define and register a new custom element
+        
+
+
+
+    </script>
+</body>
+
+</html>
